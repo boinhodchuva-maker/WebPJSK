@@ -1,0 +1,92 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PJSK Intense</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:sans-serif;
+}
+
+video{
+width:100vw;
+height:100vh;
+object-fit:cover;
+display:none;
+}
+
+#startBtn{
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+padding:20px 40px;
+font-size:24px;
+background:#00aaff;
+border:none;
+border-radius:10px;
+color:white;
+cursor:pointer;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<button id="startBtn">START</button>
+
+<video id="main">
+<source src="main-screen.mp4" type="video/mp4">
+</video>
+
+<script>
+
+let btn = document.getElementById("startBtn")
+let video = document.getElementById("main")
+
+let used = false
+
+btn.onclick = () => {
+
+btn.style.display = "none"
+video.style.display = "block"
+
+video.play()
+
+}
+
+document.addEventListener("click", () => {
+
+if(video.style.display === "block"){
+
+if(!used && video.currentTime < 15){
+
+used = true
+video.currentTime = 15
+
+}
+
+}
+
+})
+
+video.onended = () => {
+
+window.location.href = "game.html"
+
+}
+
+</script>
+
+</body>
+</html>
+```
